@@ -1,0 +1,99 @@
+<form #form="ngForm" (ngSubmit)="processForm(form)" fxLayout="column" fxLayoutAlign="" fxLayoutGap="3vh">
+
+    <mat-form-field class="inputclass">
+        <input matInput type="email"  name="email" 
+        placeholder="Enter Email"
+        #emailField="ngModel"
+        required email ngModel>
+        <mat-hint *ngIf="emailField.invalid && form.dirty" >
+            Please enter a valid email
+        </mat-hint>
+        <mat-error *ngIf="emailField.hasError('required')">
+            Email field can't be left blank
+        </mat-error>    
+    </mat-form-field>
+
+    <mat-form-field class="inputclass">
+        <input matInput type="password"  name="password" 
+            placeholder="Enter Password" 
+            #passwordField="ngModel" minlength="8"
+            required password ngModel>
+            <mat-hint *ngIf="passwordField.invalid && form.dirty" >
+                Please enter a valid password
+            </mat-hint>
+            <mat-error *ngIf="passwordField.hasError('password')">
+                Invalid password
+            </mat-error>
+            <mat-error *ngIf="emailField.hasError('required')">
+                Password field can't be left blank
+            </mat-error>             
+        </mat-form-field>
+
+    <mat-form-field class="inputclass">
+        <input matInput type="text" name="name" placeholder="Please enter your name"
+            #nameField="ngModel" required ngModel>
+        <mat-error *ngIf="nameField.hasError('required')">
+            Name field can't be left blank
+        </mat-error>
+    </mat-form-field>
+
+    <mat-label>Gender:</mat-label>
+    <mat-radio-group ngModel name="gender" fxLayout="row" fxLayoutGap="3vw" required>
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field class="inputclass">
+        <mat-label>Date of Birth:</mat-label>
+        <input matInput [matDatepicker]="picker" name="dob" 
+            ngModel required
+            placeholder="Date of Birth" [max]="yearDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker touchUi="true"></mat-datepicker>
+
+    </mat-form-field>
+
+    <mat-form-field class="inputclass">
+        <input matInput type="text" name="address" 
+            placeholder="Please enter your address"
+            #addressField="ngModel" 
+            required ngModel>
+            <mat-error *ngIf="addressField.hasError('required')">
+                Please enter an address
+            </mat-error>           
+    </mat-form-field>
+    
+    <div fxLayout = row fxLayoutGap="3vw">
+        <mat-form-field>
+        <mat-label>Country:</mat-label>
+            <select matNativeControl placeholder="Country" name="country" (change)="fetchCountry($event)" 
+                #countField="ngModel" required ngModel>
+                <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+            </select>    
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="inputclass">
+        <input matInput type="text" name="contactno" 
+            placeholder="Please enter your contact number"
+            #contactField="ngModel"
+            required ngModel>
+            <mat-error *ngIf="contactField.invalid">
+                You have entered invalid characters
+            </mat-error>
+            <mat-error *ngIf="contactField.hasError('required')">
+                Please enter contact no.
+            </mat-error>           
+    </mat-form-field>
+   
+    <div fxLayout="row column" fxLayoutAlign="space-around center">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Submit
+    </button>
+  
+    <button mat-raised-button type="reset" color="warn">
+        Reset
+    </button>  
+    </div>
+
+</form>

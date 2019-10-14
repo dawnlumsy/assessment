@@ -1,0 +1,16 @@
+<p> You have successfully submit your form. Thank You!</p>
+
+    <div>
+        <label> Email: {{ confirmedOrder.email }} </label><br>
+        <label> Password: {{ confirmedOrder.password }} </label><br>
+        <label> Name: {{ confirmedOrder.name }} </label><br>
+        <label> Gender: {{ confirmedOrder.gender }} </label><br>
+        <label> DOB: {{ confirmedOrder.dob }} </label><br>
+        <label> Address: {{ confirmedOrder.address }} </label><br>
+        <label> Country: {{ confirmedOrder.country }} </label><br>
+        <label> Contact No.: {{ confirmedOrder.contactno }} </label>
+    </div>
+
+    <button type="button" (click)="navigateToHome()">
+            Back
+    </button>
