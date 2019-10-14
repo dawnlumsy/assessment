@@ -20,12 +20,12 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng build --prod --base-href https://dawnlumsy.github.io/weather-app/
+  - ng build --prod --base-href https://dawnlumsy.github.io/assessment-app/
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist/weather-app
+  local_dir: dist/assessment-app
   on: 
     branch: master
