@@ -13,6 +13,8 @@ import { map, flatMap, toArray } from 'rxjs/operators';
 })
 export class FirstcomponentComponent implements OnInit {
 
+  strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
   constructor(private assessmentService : AssessmentserviceService, private router : Router) { }
   
   todayDate = new Date();

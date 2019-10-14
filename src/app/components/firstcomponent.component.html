@@ -15,7 +15,7 @@
 
     <mat-form-field class="inputclass">
         <input matInput type="password"  name="password" 
-            placeholder="Enter Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#\$])(?=.{8,})"
+            placeholder="Enter Password" [pattern]="strongRegex"
             #passwordField="ngModel"
             required ngModel>
             <mat-hint *ngIf="passwordField.invalid" >
