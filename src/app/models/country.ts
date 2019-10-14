@@ -1,8 +1,5 @@
-export class Country {
-
-    constructor(
-      name: string,
-      code : string
-    ) {  }
+export interface Country {
+      name: string;
+      code : string;
   
   }
